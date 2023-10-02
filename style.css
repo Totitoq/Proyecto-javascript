@@ -80,3 +80,7 @@ button {
     cursor: pointer;
     font-size: 14px;
 }
+
+.list-group-item .btn-danger {
+    margin-left: 10px;
+}

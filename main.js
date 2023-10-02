@@ -83,4 +83,31 @@ $('#taskList').on('click', 'li', function() {
     const id = parseInt($(this).attr('data-id'));
     toggleTaskCompletion(id);
 });
+// ...
+
+// Función para cargar tareas desde JSONPlaceholder (API externa)
+function loadTasksFromAPI() {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(data => {
+            // Supongamos que la API devuelve un array de tareas con el formato adecuado
+            tasks = data.map(task => ({
+                id: task.id,
+                text: task.title,
+                completed: task.completed
+            }));
+            saveTasks();
+            renderTasks();
+        })
+        .catch(error => {
+            console.error('Error al cargar las tareas desde la API:', error);
+        });
+}
+
+// ...
+
+// Cargar tareas al inicio
+loadTasksFromAPI();
+
+// ...
 
